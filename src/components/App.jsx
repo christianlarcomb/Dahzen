@@ -15,6 +15,8 @@ import Notifications, { notify } from "./Notifications";
 import DailyAppImages from "./ImageSets/DailyAppImages";
 
 
+// TODO: Continue converting from traditional CSS usage to 'styled-components'.
+
 class App extends React.Component
 {
 
@@ -24,6 +26,7 @@ class App extends React.Component
         this.state = {
             toggled: false,
 
+            // TODO: Consider moving this data off-site.
             statements:
                 [
                     "When founding Dähzen months ago, I envisioned a culture that was capable " +
@@ -79,24 +82,26 @@ class App extends React.Component
         return (
             <>
 
+                {/* Renders the notification box in the DOM */}
                 <Notifications/>
 
                 <header id="mobile_header">
 
                     <DahzShortLogo/>
 
-                    <div onClick={() => notify('warning', 'The investors page is currently under construction!')} id="investors-button-mobile">Investors</div>
+                    <div onClick={() => notify('Heads up!', 'The investors page is currently under construction!')} id="investors-button-mobile">Investors</div>
 
                 </header>
 
                 <div id="grid-container">
-                    <div onClick={() => notify('warning', 'The investors page is currently under construction!')}  id="investors-button-desk">Investors</div>
+                    <div onClick={() => notify('Heads up!', 'The investors page is currently under construction!')}  id="investors-button-desk">Investors</div>
 
                     <div id="sidebar">
                         <DahzenLogo/>
                     </div>
 
                     <div id="content">
+
                         <div id="content-message">
 
                             <div className="section" id="section-one">

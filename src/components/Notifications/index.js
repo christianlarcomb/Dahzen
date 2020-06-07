@@ -14,11 +14,11 @@ const Container = styled.div`
         backdrop-filter: blur(50px) saturate(250%);
         color: white;
         position: fixed;
-        bottom: ${props => props.bottom}px;
-        opacity: ${props => props.opacity}%;
+        bottom: ${props => props.toggled ? '16' : '-160'}px;
+        opacity: ${props => props.toggled ? '100' : '0'};
         left: 16px;
         z-index: 999;
-        transition: bottom 0.25s ease;
+        transition: bottom 0.25s ease, opacity 0.25s ease;
         width: calc(100% - 32px);
         
         border-radius: 10px;
@@ -33,11 +33,11 @@ const Container = styled.div`
         backdrop-filter: blur(50px) saturate(250%);
         color: white;
         position: fixed;
-        bottom: ${props => props.bottom}px;
-        opacity: ${props => props.opacity}%;
+        bottom: ${props => props.toggled ? '16' : '-160'}px;
+        opacity: ${props => props.toggled ? '100' : '0'};
         left: 16px;
         z-index: 999;
-        transition: bottom 0.25s ease;
+        transition: bottom 0.25s ease, opacity 0.25s ease;
         width: 350px;
         
         border-radius: 10px;
@@ -74,9 +74,9 @@ const NotifExitBtn = styled.div`
 
 const emitter = new ee();
 
-export const notify = (type, msg) =>
+export const notify = (title, msg) =>
 {
-    emitter.emit('notification', type, msg)
+    emitter.emit('notification', title, msg)
 }
 
 export default class Notifications extends React.Component
@@ -87,10 +87,14 @@ export default class Notifications extends React.Component
         super(props);
 
         this.state = {
-            bottom: -200,
-            opacity: 40,
-            type: '',
-            msg: ''
+
+            toggled: false,
+
+            contents: {
+                icon: '',
+                title: '',
+                msg: ''
+            }
         }
 
         this.timeout = null;
@@ -101,7 +105,8 @@ export default class Notifications extends React.Component
 
     }
 
-    onShow = (type, msg) =>
+    /* Determines how the showing of the notification functions: prevents looping or spammed notifications */
+    onShow = (title, msg) =>
     {
 
         if(this.timeout)
@@ -111,46 +116,57 @@ export default class Notifications extends React.Component
 
             clearTimeout(this.timeout);
 
-            this.setState({ bottom: -125 , opacity: 1}, () => {
+            this.setState({
+                toggled: false
+            }, () => {
                 this.timeout = setTimeout(() => {
-                    this.showNotification(type, msg)
+                    this.showNotification(title, msg)
                 }, 250)
             })
 
         } else {
-            this.showNotification(type, msg)
+            this.showNotification(title, msg)
         }
     }
 
-    showNotification = (type, msg) =>
+    /* Sets the state of the notification and displays it: Implements a timeout */
+    showNotification = (title, msg) =>
     {
         this.setState({
-            bottom: 16,
-            opacity: 100,
-            type: type,
-            msg: msg
+
+            toggled: true,
+
+            contents:
+                {
+                    title: title,
+                    msg: msg
+                }
+
         }, () => {
             this.timeout = setTimeout(() => {
-                this.setState({
-                    bottom: -125,
-                    opacity: 40
-                })
+                this.setState({ toggled: false })
             }, 5000)
         })
     }
 
+    /* Renders the notification on the DOM */
     render()
     {
         return(
-            <Container bottom={this.state.bottom} opacity={this.state.opacity}>
+            <Container toggled={this.state.toggled}>
+
                 <Header>
                     <AlertIcon style={{height: 30, width: 30, 'margin': '0 auto', 'align-self':'center'}}/>
-                    <span>Heads up!</span>
-                    <NotifExitBtn onClick={() => this.setState({bottom: -125, opacity: 30})}>
+
+                    <span>{this.state.contents.title}</span>
+
+                    <NotifExitBtn onClick={() => this.setState({ toggled: false })}>
                         <ExitIcon style={{height: "14px", width: "14px", fill: "white", opacity:'60%'}}/>
                     </NotifExitBtn>
                 </Header>
-                <Message>{this.state.msg}</Message>
+
+                <Message>{this.state.contents.msg}</Message>
+
             </Container>
         );
     }
