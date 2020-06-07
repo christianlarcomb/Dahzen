@@ -7,6 +7,10 @@
 
 # assets
 /src/assets
+public/logo192.png
+public/logo512.png
+public/favicon.ico
+src/logo.svg
 
 # notes
 src/notes
