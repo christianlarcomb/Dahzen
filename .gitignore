@@ -5,6 +5,12 @@
 /.pnp
 .pnp.js
 
+# assets
+/src/assets
+
+# notes
+src/notes
+
 # testing
 /coverage
 
