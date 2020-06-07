@@ -8,3 +8,6 @@ The company web-app. Directs traffic to all of our subsidiaries.
 - src/assets
 - src/notes
 - src/logo.svg
+
+### In progress
+- Converting from traditional css with id's and classnames to styled-components.
