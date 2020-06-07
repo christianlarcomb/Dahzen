@@ -10,4 +10,4 @@ The company web-app. Directs traffic to all of our subsidiaries.
 - src/logo.svg
 
 ### In progress
-- Converting from traditional css with id's and classnames to styled-components.
+- Converting from traditional css with its and class-names to styled-components.
