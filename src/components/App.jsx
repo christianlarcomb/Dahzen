@@ -106,6 +106,7 @@ class App extends React.Component
 
                             <div className="section" id="section-one">
 
+                                {/* Company Header */}
                                 <h1>
                                     <span>Defining</span>
                                     <br/>
