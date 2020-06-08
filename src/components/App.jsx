@@ -82,6 +82,7 @@ class App extends React.Component
                 {/* Renders the notification box in the DOM */}
                 <Notifications/>
 
+                {/* TODO: Add properties to make this component more configurable */}
                 {/* Universal Header */}
                 <AppHeader/>
 
