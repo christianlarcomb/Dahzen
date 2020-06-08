@@ -140,9 +140,11 @@ class App extends React.Component
                         </div>
 
                         <div id="content-companies">
+
                             <div id="our-companies">
                                 <h4>Our Companies</h4>
                             </div>
+
                             <div id="dailyapp">
 
                                 <div id="dailyapp-content">

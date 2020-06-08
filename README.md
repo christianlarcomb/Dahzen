@@ -11,3 +11,5 @@ The company web-app. Directs traffic to all of our subsidiaries.
 
 ### In progress
 - Converting from traditional css with its and class-names to styled-components.
+
+This was updated!
