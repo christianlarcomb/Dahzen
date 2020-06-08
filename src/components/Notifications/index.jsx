@@ -10,9 +10,9 @@ const Container = styled.div`
     /* Mobile */
     @media screen and (max-width: 760px)
     {
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(50px) saturate(250%);
-        color: white;
+        background-color: var(--cream-back);
+
+        color: gray;
         position: fixed;
         bottom: ${props => props.toggled ? '16' : '-160'}px;
         opacity: ${props => props.toggled ? '100' : '0'};
@@ -22,6 +22,13 @@ const Container = styled.div`
         width: calc(100% - 32px);
         
         border-radius: 10px;
+        border-color: #dfdfdf;
+        border-width: 1.5px;
+        border-style: solid;
+        
+        -webkit-filter: drop-shadow(0px 25px 10px rgba(0, 0, 0, 0.09));
+        filter: drop-shadow(0px 25px 10px rgba(0, 0, 0, 0.09));
+        
         display: grid;
         grid-template-rows: 50px 1fr;
     }
@@ -29,9 +36,9 @@ const Container = styled.div`
     /* Desktop */
     @media screen and (min-width: 760px)
     {
-        background-color: rgba(0, 0, 0, 0.5);
-        backdrop-filter: blur(50px) saturate(250%);
-        color: white;
+        background-color: var(--cream-back);
+        
+        color: gray;
         position: fixed;
         bottom: ${props => props.toggled ? '16' : '-160'}px;
         opacity: ${props => props.toggled ? '100' : '0'};
@@ -41,6 +48,13 @@ const Container = styled.div`
         width: 350px;
         
         border-radius: 10px;
+        border-color: #dfdfdf;
+        border-width: 1.5px;
+        border-style: solid;
+        
+        -webkit-filter: drop-shadow(0px 25px 10px rgba(0, 0, 0, 0.09));
+        filter: drop-shadow(0px 25px 10px rgba(0, 0, 0, 0.09));
+        
         display: grid;
         grid-template-rows: 50px 1fr;
     }
@@ -102,13 +116,11 @@ export default class Notifications extends React.Component
         emitter.on('notification', (type, msg) => {
             this.onShow(type, msg)
         })
-
     }
 
     /* Determines how the showing of the notification functions: prevents looping or spammed notifications */
     onShow = (title, msg) =>
     {
-
         if(this.timeout)
         {
 

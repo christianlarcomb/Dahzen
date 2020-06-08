@@ -9,13 +9,11 @@ import LMDMIcons from './DarkModeToggles/LMDMIcons'
 import { ReactComponent as DailyVector } from '../assets/vectors/daily_full.svg';
 import { ReactComponent as DahzenLogo } from '../assets/vectors/dahzen_logo_vector.svg'
 import { ReactComponent as LarcombsSig } from '../assets/vectors/my_signature.svg'
-import { ReactComponent as DahzShortLogo } from '../assets/vectors/dahzen_short_vector_gray.svg';
 
-import Notifications, { notify } from "./Notifications";
 import DailyAppImages from "./ImageSets/DailyAppImages";
+import AppHeader from "./Header";
 
-
-// TODO: Continue converting from traditional CSS usage to 'styled-components'.
+import Notifications from "./Notifications";
 
 class App extends React.Component
 {
@@ -26,7 +24,6 @@ class App extends React.Component
         this.state = {
             toggled: false,
 
-            // TODO: Consider moving this data off-site.
             statements:
                 [
                     "When founding Dähzen months ago, I envisioned a culture that was capable " +
@@ -85,20 +82,11 @@ class App extends React.Component
                 {/* Renders the notification box in the DOM */}
                 <Notifications/>
 
-                <header id="mobile_header">
+                {/* Universal Header */}
+                <AppHeader/>
 
-                    <DahzShortLogo/>
-
-                    <div onClick={() => notify('Heads up!', 'The investors page is currently under construction!')} id="investors-button-mobile">Investors</div>
-
-                </header>
-
+                {/* TODO: Utilize styled-components and remove excess css documents. [Merge Desktop & Mobile CSS] */}
                 <div id="grid-container">
-                    <div onClick={() => notify('Heads up!', 'The investors page is currently under construction!')}  id="investors-button-desk">Investors</div>
-
-                    <div id="sidebar">
-                        <DahzenLogo/>
-                    </div>
 
                     <div id="content">
 
@@ -107,13 +95,7 @@ class App extends React.Component
                             <div className="section" id="section-one">
 
                                 {/* Company Header */}
-                                <h1>
-                                    <span>Defining</span>
-                                    <br/>
-                                    <span>Dähzen</span>
-                                    <span>Inc</span>
-                                    <span>.</span>
-                                </h1>
+                                <h1>Welcome,</h1>
 
                                 {/* Render all of the message elements */}
                                 {this.state.statements.map(statement => (
