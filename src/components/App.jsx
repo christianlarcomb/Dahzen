@@ -75,7 +75,6 @@ class App extends React.Component
     handleClick = () => { this.setState({ toggled: !this.state.toggled }) }
 
     render() {
-
         return (
             <>
 
@@ -96,7 +95,7 @@ class App extends React.Component
                             <div className="section" id="section-one">
 
                                 {/* Company Header */}
-                                <h1>Welcome,</h1>
+                                <h1>APP ARTISTS <br/>SINCE 2020</h1>
 
                                 {/* Render all of the message elements */}
                                 {this.state.statements.map(statement => (
@@ -166,6 +165,6 @@ class App extends React.Component
         );
     }
 
-    }
+}
 
 export default App;

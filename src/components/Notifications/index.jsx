@@ -78,12 +78,20 @@ const Message = styled.span`
 const NotifExitBtn = styled.div`
     height: 32px;
     width: 32px;
-    background-color: rgba(200, 200 ,200, 0.4);
+    background-color: #d7d7d7;
     border-radius: 100%;
     margin: 0 auto;
     display: grid;
     place-items: center;
     cursor: pointer;
+    
+    svg:nth-child(1)
+    {
+      height: 14px;
+      width: 14px;
+      fill: #737373;
+      opacity:60%;
+    }
 `;
 
 const emitter = new ee();
@@ -173,7 +181,7 @@ export default class Notifications extends React.Component
                     <span>{this.state.contents.title}</span>
 
                     <NotifExitBtn onClick={() => this.setState({ toggled: false })}>
-                        <ExitIcon style={{height: "14px", width: "14px", fill: "white", opacity:'60%'}}/>
+                        <ExitIcon/>
                     </NotifExitBtn>
                 </Header>
 
