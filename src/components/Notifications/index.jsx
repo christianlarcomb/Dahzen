@@ -12,14 +12,14 @@ const Container = styled.div`
     {
         background-color: var(--cream-back);
 
-        color: gray;
+        color: black;
         position: fixed;
-        bottom: ${props => props.toggled ? '16' : '-160'}px;
+        bottom: ${props => props.toggled ? '8' : '-160'}px;
         opacity: ${props => props.toggled ? '100' : '0'};
-        left: 16px;
+        left: 8px;
         z-index: 999;
         transition: bottom 0.25s ease, opacity 0.25s ease;
-        width: calc(100% - 32px);
+        width: calc(100% - 16px);
         
         border-radius: 10px;
         border-color: #dfdfdf;
@@ -38,11 +38,11 @@ const Container = styled.div`
     {
         background-color: var(--cream-back);
         
-        color: gray;
+        color: black;
         position: fixed;
-        bottom: ${props => props.toggled ? '16' : '-160'}px;
+        bottom: ${props => props.toggled ? '8' : '-160'}px;
         opacity: ${props => props.toggled ? '100' : '0'};
-        left: 16px;
+        left: 8px;
         z-index: 999;
         transition: bottom 0.25s ease, opacity 0.25s ease;
         width: 350px;

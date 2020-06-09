@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {ReactComponent as DahzShortLogo} from "../../assets/vectors/dahzen_short_vector_gray.svg";
+import {ReactComponent as TestLogo} from "../../assets/vectors/logo_idea.svg";
 import {notify} from "../Notifications";
 
 const Header = styled.div`
@@ -12,7 +13,7 @@ const Header = styled.div`
     backdrop-filter: blur(75px) saturate(250%);
     -webkit-backdrop-filter: blur(75px) saturate(250%);
     
-    grid-template-columns: 80px 115px;
+    grid-template-columns: 200px 115px;
     place-items: center;
     
     top: 0;
@@ -50,13 +51,39 @@ const Button = styled.div`
     }
 `
 
+const LogoContainer = styled.div`
+
+  display: grid;
+  place-items: center;
+
+  grid-template-columns: 60px 100px;
+  
+  svg:nth-child(1) { 
+  height: 30px; 
+  stroke: black;
+  stroke-width: 8px;
+  }
+  
+  span {
+    font-size: 24px;
+    font-weight: 100;
+  }
+
+`
+
 function AppHeader()
 {
     return(
         <>
             <Header>
 
-                <DahzShortLogo/>
+                {/* TODO: Replace with a more contemporary and suiting logo */}
+                <LogoContainer>
+                    <TestLogo/>
+
+                    <span>Dähzen</span>
+                </LogoContainer>
+
 
                 <Button onClick={() => notify('Heads up!', 'The investors page is currently under construction!')}>Investors</Button>
 
